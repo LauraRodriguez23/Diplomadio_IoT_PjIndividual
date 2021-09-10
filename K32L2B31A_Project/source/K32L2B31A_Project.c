@@ -18,6 +18,8 @@
 #include "clock_config.h"
 #include "K32L2B31A.h"
 #include "fsl_debug_console.h"
+
+#include "leds.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -41,6 +43,22 @@ float dato_float = 3.1416;
  * Private Source Code
  ******************************************************************************/
 
+/*-----------------------------------------------------------------------------*/
+
+/*!
+ * @brief Genera bloqueo de microcontrolador por tiempo fijo
+ *
+ */
+void delay_block(void){
+
+	uint32_t i;
+	for(i=0;i<0xFFFFF;i++){
+
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
 int main(void) {
 
 	int i = 0 ;/* Force the counter to be placed into memory. */
@@ -62,6 +80,10 @@ int main(void) {
     while(1) {
         i++ ;
         printf("i:%u\n\r", i);
+        encender_led_verde();
+        delay_block();
+        apagar_led_verde();
+        delay_block();
 
     }
     return 0 ;
