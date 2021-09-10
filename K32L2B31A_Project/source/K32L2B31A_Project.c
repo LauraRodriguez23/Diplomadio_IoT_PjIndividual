@@ -76,14 +76,47 @@ int main(void) {
     printf("test_global_var: %d\n\r", test_global_var);
     printf("dato_float: %g\n\r", dato_float);
 
+ /*--------------------------------------------------------------------------------*/
+ /*!
+  * @brief Enciende y apaga el led rojo
+  *
+  */
+    unsigned char controlar_led_rojo(){
+    encender_led_rojo();
+    delay_block();
+    apagar_led_rojo();
+    delay_block();
+
+    return 0;
+    }
+
+/*--------------------------------------------------------------------------------*/
+/*!
+ * @brief Enciende y apaga el led verde
+ *
+ */
+    unsigned char controlar_led_verde(){
+    encender_led_verde();
+    delay_block();
+    apagar_led_verde();
+    delay_block();
+
+    return 0;
+    }
+
+/*--------------------------------------------------------------------------------*/
+
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
         i++ ;
         printf("i:%u\n\r", i);
-        encender_led_verde();
-        delay_block();
-        apagar_led_verde();
-        delay_block();
+
+        for(i=0;i<10;i++){
+            controlar_led_rojo();
+         }
+        for(i=0;i<10;i++){
+            controlar_led_verde();
+         }
 
     }
     return 0 ;

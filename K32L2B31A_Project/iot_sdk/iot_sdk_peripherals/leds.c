@@ -41,6 +41,20 @@
  * Public Source Code
  ******************************************************************************/
  
+void encender_led_rojo(){
+
+	GPIO_PinWrite(GPIOE,31,0);
+
+	//encender led verde
+}
+
+void apagar_led_rojo(){
+
+	GPIO_PinWrite(GPIOE,31,1);
+
+	//encender led verde
+}
+
 void encender_led_verde(){
 
 	GPIO_PinWrite(GPIOD,5,0);
