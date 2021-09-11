@@ -20,6 +20,9 @@
 #include "fsl_debug_console.h"
 
 #include "leds.h"
+
+#include "sensor_de_luz.h"
+
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -52,7 +55,7 @@ float dato_float = 3.1416;
 void delay_block(void){
 
 	uint32_t i;
-	for(i=0;i<0xFFFFF;i++){
+	for(i=0;i<0xFFFF;i++){
 
 	}
 }
@@ -62,6 +65,8 @@ void delay_block(void){
 int main(void) {
 
 	int i = 0 ;/* Force the counter to be placed into memory. */
+
+	uint32_t adc_sensor_de_luz;
 
     /* Init board hardware. */
     BOARD_InitBootPins();
@@ -76,47 +81,15 @@ int main(void) {
     printf("test_global_var: %d\n\r", test_global_var);
     printf("dato_float: %g\n\r", dato_float);
 
- /*--------------------------------------------------------------------------------*/
- /*!
-  * @brief Enciende y apaga el led rojo
-  *
-  */
-    unsigned char controlar_led_rojo(){
-    encender_led_rojo();
-    delay_block();
-    apagar_led_rojo();
-    delay_block();
-
-    return 0;
-    }
-
-/*--------------------------------------------------------------------------------*/
-/*!
- * @brief Enciende y apaga el led verde
- *
- */
-    unsigned char controlar_led_verde(){
-    encender_led_verde();
-    delay_block();
-    apagar_led_verde();
-    delay_block();
-
-    return 0;
-    }
-
-/*--------------------------------------------------------------------------------*/
-
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
-        i++ ;
-        printf("i:%u\n\r", i);
+       i++ ;
+       printf("i:%u\n\r", i);
 
-        for(i=0;i<10;i++){
-            controlar_led_rojo();
-         }
-        for(i=0;i<10;i++){
-            controlar_led_verde();
-         }
+
+       adc_sensor_de_luz = SensorDeLuzObtenerResultadoADC();
+
+       printf("ADC SENSOR DE LUZ: %u\r\n", adc_sensor_de_luz);
 
     }
     return 0 ;
