@@ -352,6 +352,21 @@ void BOARD_InitACCEL_I2CPins(void);
  */
 void BOARD_InitOSCPins(void);
 
+/*! @name PORTE22 (number 11), J4[5]/DIFF_ADC1_DP
+  @{ */
+
+/* Symbols to be used with PORT driver */
+#define SENSORDELUZ_SENSOR_DE_LUZ_PORT PORTE                /*!<@brief PORT peripheral base pointer */
+#define SENSORDELUZ_SENSOR_DE_LUZ_PIN 22U                   /*!<@brief PORT pin number */
+#define SENSORDELUZ_SENSOR_DE_LUZ_PIN_MASK (1U << 22U)      /*!<@brief PORT pin mask */
+                                                            /* @} */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void sensorDeLuz(void);
+
 #if defined(__cplusplus)
 }
 #endif
