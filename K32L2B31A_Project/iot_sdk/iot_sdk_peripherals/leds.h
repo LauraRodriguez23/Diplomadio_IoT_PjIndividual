@@ -71,6 +71,14 @@ void apagar_led_verde();
 
 /*--------------------------------------------------------------------------------*/
 
+/*!
+ * @brief Invierte estado de LED rojo de la tarjeta
+ *
+ */
+void toggle_led_rojo();
+
+/*--------------------------------------------------------------------------------*/
+
 /** @} */ // end of X LEDs
 /** @} */ // end of X PERIPHERALS
 
