@@ -68,3 +68,9 @@ void apagar_led_verde(){
 
 	//apagar led verde
 }
+
+void toggle_led_rojo(){
+
+	GPIO_PortToggle(GPIOE, 1U << 31U);
+
+}
