@@ -29,6 +29,7 @@
 void SensorDeLuzIniciarCaptura(void);
 
 /*-----------------------------------------------------------------------------*/
+
 /*!
  * @brief Espera a que finalice el trabajo del ADC
  *
@@ -90,6 +91,19 @@ uint32_t SensorDeLuzObtenerResultadoADC(void){
 	resultadoADC = ADC16_GetChannelConversionValue(SENSOR_DE_LUZ_ADC16_BASE, SENSOR_DE_LUZ_ADC16_CHANNEL_GROUP);
 
 	return(resultadoADC);
+
+}
+
+/*-----------------------------------------------------------------------------*/
+
+uint32_t CalcularValorDeLux(void){
+
+	uint32_t adc_Voltaje_del_Sensor;
+
+	adc_Voltaje_del_Sensor = SensorDeLuzObtenerResultadoADC();
+	adc_Voltaje_del_Sensor = (2*(Vref-(Vref/adc_Voltaje_del_Sensor)))*Vr;
+
+	return (adc_Voltaje_del_Sensor);
 
 }
 

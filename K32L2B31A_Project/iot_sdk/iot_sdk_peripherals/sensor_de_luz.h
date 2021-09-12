@@ -29,6 +29,8 @@
 #define SENSOR_DE_LUZ_ADC16_CHANNEL_GROUP 0U
 #define SENSOR_DE_LUZ_ADC16_USER_CHANNEL  3U /* PTE22, ADC0_SE3 */
 
+#define Vref			(float)(3.3)
+#define Vr              (uint32_t)(10000)
 /*******************************************************************************
  * External vars
  ******************************************************************************/
@@ -43,10 +45,10 @@
 
 /*-----------------------------------------------------------------------------*/
 /*!
- * @brief Retorna resultado de la conversion ADC para sensor de luz
+ * @brief Retorna resultado de la conversion del voltaje ADC a el valor de luxes
  *
  */
-uint32_t SensorDeLuzObtenerResultadoADC(void);
+uint32_t CalcularValorDeLux(void);
 
 /*-----------------------------------------------------------------------------*/
 
