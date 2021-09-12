@@ -1,16 +1,17 @@
-/*! @file : sensor_de_luz.h
+/*! @file : sensor_de_temperatura.h
  * @author  Laura Rodríguez Polo
  * @version 1.0.0
- * @date    10/09/2021
- * @brief   Driver para 
+ * @date    11/09/2021
+ * @brief   Driver para lectura de sensor de temperatura interno en la tarjeta FRDM - K32L2B3
  * @details
  *
  */
-#ifndef IOT_SDK_PERIPHERALS_SENSOR_DE_LUZ_H_
-#define IOT_SDK_PERIPHERALS_SENSOR_DE_LUZ_H_
+#ifndef IOT_SDK_PERIPHERALS_SENSOR_DE_TEMPERATURA_H_
+#define IOT_SDK_PERIPHERALS_SENSOR_DE_TEMPERATURA_H_
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include "peripherals.h"
 
 /*!
@@ -18,19 +19,18 @@
  * @{
  */
 /*!
- * @addtogroup SENSOR_DE_LUZ
+ * @addtogroup SENSOR_DE_TEMPERATURA
  * @{
  */
 /*******************************************************************************
  * Public Definitions
  ******************************************************************************/
 
-#define SENSOR_DE_LUZ_ADC16_BASE          ADC0
-#define SENSOR_DE_LUZ_ADC16_CHANNEL_GROUP 0U
-#define SENSOR_DE_LUZ_ADC16_USER_CHANNEL  3U /* PTE22, ADC0_SE3 */
+#define SENSOR_DE_TEMPERATURA_ADC0_PERIPHERAL ADC0
+#define SENSOR_DE_TEMPERATURA_ADC0_CH0_CONTROL_GROUP 0
 
-#define Vref			(float)(3.3)
-#define Vr              (uint32_t)(10000)
+#define VTEMP25			(float)(0.716)
+
 /*******************************************************************************
  * External vars
  ******************************************************************************/
@@ -45,14 +45,14 @@
 
 /*-----------------------------------------------------------------------------*/
 /*!
- * @brief Retorna resultado de la conversion del voltaje ADC a el valor de luxes
+ * @brief Retorna resultado de la conversion del voltaje ADC a el valor de la temperatura
  *
  */
-uint32_t CalcularValorDeLux(void);
+float CalcularValorDeTemperatura(void);
 
 /*-----------------------------------------------------------------------------*/
 
-/** @} */ // end of SENSOR_DE_LUZ
-/** @} */ // end of PERIPHERALS
+/** @} */ // end of SENSOR_DE_TEMPERATURA group
+/** @} */ // end of PERIPHERALS group
 
-#endif /* IOT_SDK_PERIPHERALS_SENSOR_DE_LUZ_H_ */
+#endif /* IOT_SDK_PERIPHERALS_SENSOR_DE_TEMPERATURA_H_ */
