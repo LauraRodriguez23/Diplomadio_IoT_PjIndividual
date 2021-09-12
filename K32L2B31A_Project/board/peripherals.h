@@ -25,12 +25,20 @@ extern "C" {
 #define ADC0_PERIPHERAL ADC0
 /* Definition of custom name for ADC0 configuration #0 (channel 3, control group 0) */
 #define ADC0_SENSOR_DE_LUZ 0U
+/* Definition of custom name for ADC0 configuration #1 (channel 26, control group 0) */
+#define ADC0_SENSOR_DE_TEMPERATURA 1U
+/* Definition of custom name for ADC0 configuration #2 (channel 27, control group 0) */
+#define ADC0_VOLTAJE_INT_BANDA 2U
 /* ADC0 interrupt vector ID (number). */
 #define ADC0_IRQN ADC0_IRQn
 /* ADC0 interrupt handler identifier. */
 #define ADC0_IRQHANDLER ADC0_IRQHandler
 /* Channel 0 (SE.3) conversion control group. */
 #define ADC0_CH0_CONTROL_GROUP 0
+/* Channel 1 (SE.26) conversion control group. */
+#define ADC0_CH1_CONTROL_GROUP 0
+/* Channel 2 (SE.27) conversion control group. */
+#define ADC0_CH2_CONTROL_GROUP 0
 /* BOARD_InitPeripherals defines for LPTMR0 */
 /* Definition of peripheral ID */
 #define LPTMR0_PERIPHERAL LPTMR0
@@ -50,7 +58,7 @@ extern "C" {
 /***********************************************************************************************************************
  * Global variables
  **********************************************************************************************************************/
-extern adc16_channel_config_t ADC0_channelsConfig[1];
+extern adc16_channel_config_t ADC0_channelsConfig[3];
 extern const adc16_config_t ADC0_config;
 extern const adc16_channel_mux_mode_t ADC0_muxMode;
 extern const lptmr_config_t LPTMR0_config;

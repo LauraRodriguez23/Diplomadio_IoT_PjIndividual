@@ -23,6 +23,7 @@
 #include "sensor_de_luz.h"
 #include "irq_lptmr0.h"
 #include "botones.h"
+#include "sensor_de_temperatura.h"
 
 /*******************************************************************************
  * Definitions
@@ -53,6 +54,8 @@ int main(void) {
 
 	uint32_t adc_sensor_de_luz;
 
+	float adc_sensor_de_temperatura;
+
 	bool boton1, boton2;
 
     /* Init board hardware. */
@@ -71,7 +74,7 @@ int main(void) {
     /* Start counting */
         LPTMR_StartTimer(LPTMR0);
 
-    /* Enter an infinite loop, just incrementing a counter. */
+    /* Enter an infinite loop, just incrementing a counter.*/
     while(1) {
 
     	if(lptmr0_irq_counter!=0){
@@ -82,14 +85,23 @@ int main(void) {
     		i++ ;
     		printf("i:%u\n\r", i);
 
-            adc_sensor_de_luz = SensorDeLuzObtenerResultadoADC();
-    	    printf("ADC SENSOR DE LUZ: %u\r\n", adc_sensor_de_luz);
+            boton1=boton_1LeerEstado();
+            adc_sensor_de_temperatura = CalcularValorDeTemperatura();
+            if(boton1==false){
 
-    	    boton1=boton_1LeerEstado();
+                printf("TEMPERATURA: %f\r\n", adc_sensor_de_temperatura);
+
+             }
     	    boton2=boton_2LeerEstado();
-    	    printf("BOTON 1: %u\r\n", boton1);
-    	    printf("BOTON 2: %u\r\n", boton2);
+    	    adc_sensor_de_luz = CalcularValorDeLux();
+    	    if(boton2==false){
+
+    	       printf("LUX: %d\r\n", adc_sensor_de_luz);
+
+             }
+
     	}
+
     }
     return 0 ;
 }
