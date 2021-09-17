@@ -106,5 +106,4 @@ uint32_t CalcularValorDeLux(void){
 	return (adc_Voltaje_del_Sensor);
 
 }
-
 /*-----------------------------------------------------------------------------*/

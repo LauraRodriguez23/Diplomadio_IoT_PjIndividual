@@ -1,36 +1,34 @@
-/*! @file : sensor_de_luz.h
+/*! @file : irq_lpuart0.h
  * @author  Laura Rodríguez Polo
  * @version 1.0.0
- * @date    10/09/2021
+ * @date    15/09/2021
  * @brief   Driver para 
  * @details
  *
  */
-#ifndef IOT_SDK_PERIPHERALS_SENSOR_DE_LUZ_H_
-#define IOT_SDK_PERIPHERALS_SENSOR_DE_LUZ_H_
+#ifndef IOT_SDK_IRQ_IRQ_LPUART0_H_
+#define IOT_SDK_IRQ_IRQ_LPUART0_H_
 /*******************************************************************************
  * Includes
  ******************************************************************************/
+
 #include "peripherals.h"
 
 /*!
- * @addtogroup PERIPHERALS
+ * @addtogroup IRQ
  * @{
  */
 /*!
- * @addtogroup SENSOR_DE_LUZ
+ * @addtogroup LPUART0
  * @{
  */
 /*******************************************************************************
  * Public Definitions
  ******************************************************************************/
 
-#define SENSOR_DE_LUZ_ADC16_BASE          ADC0
-#define SENSOR_DE_LUZ_ADC16_CHANNEL_GROUP 0U
-#define SENSOR_DE_LUZ_ADC16_USER_CHANNEL  3U /* PTE22, ADC0_SE3 */
+/*! @brief Ring buffer size (Unit: Byte). */
+#define RX_RING_BUFFER_SIZE         36
 
-#define Vref			(float)(3.3)
-#define Vr              (uint32_t)(10000)
 /*******************************************************************************
  * External vars
  ******************************************************************************/
@@ -43,18 +41,11 @@
  * Public Prototypes
  ******************************************************************************/
 
-/*-----------------------------------------------------------------------------*/
-/*!
- * @brief Retorna resultado de la conversion del voltaje ADC a el valor de luxes
- *
- */
-uint32_t CalcularValorDeLux(void);
+uint8_t pullByteDesdeBufferCircular();
 
+int32_t numeroDeByteDisponibleEnBufferRX();
 
-uint32_t imprimirValorDeLux(void);
-/*-----------------------------------------------------------------------------*/
+/** @} */ // end of LPUART0 group
+/** @} */ // end of IRQ group
 
-/** @} */ // end of SENSOR_DE_LUZ
-/** @} */ // end of PERIPHERALS
-
-#endif /* IOT_SDK_PERIPHERALS_SENSOR_DE_LUZ_H_ */
+#endif /* IOT_SDK_IRQ_IRQ_LPUART0_H_ */
