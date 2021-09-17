@@ -50,6 +50,8 @@
  */
 uint32_t CalcularValorDeLux(void);
 
+
+uint32_t imprimirValorDeLux(void);
 /*-----------------------------------------------------------------------------*/
 
 /** @} */ // end of SENSOR_DE_LUZ
